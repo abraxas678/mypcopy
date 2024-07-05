@@ -1,5 +1,6 @@
 #!/bin/bash
-docker kill pcopy
-docker rm pcopy
-docker run -it --name pcopy -p 2586:2586 -v $HOME/.config/pcopy/server.conf:/config/server.conf docker.io/abraxas678/mypcopy pcp
+sudo docker kill pcopy
+sudo docker rm pcopy
+[[ -z $1 ]] && sudo docker run --name pcopy -p 2586:2586 -v $HOME/.config/pcopy/server.conf:/config/server.conf docker.io/abraxas678/mypcopy --keyfile /home/abrax/.config/pcopy/server.key
+[[ $1 = "local" ]] && sudo docker run --name pcopy -p 2586:2586 -v $HOME/.config/pcopy/server.conf:/config/server.conf docker.io/abraxas678/mypcopy --keyfile /home/abrax/.config/pcopy/server.key
 
